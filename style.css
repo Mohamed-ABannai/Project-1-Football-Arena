@@ -21,6 +21,7 @@ body {
 
     background-attachment: fixed;
 
+    flex-wrap: wrap;
 
 
 
@@ -107,6 +108,8 @@ width: 300px;
 object-fit: cover;
 background-position: center;
 border-radius: 40px;
+flex-wrap: wrap;
+
 }
 
 #Categores-Selected{
@@ -118,3 +121,21 @@ gap: 30px;
 margin-top: 100px;
 }
 
+.Level{
+
+height: 150px;
+width: 300px;
+object-fit: cover;
+background-position: center;
+border-radius: 40px;
+flex-wrap: wrap;
+}
+
+#Levels{
+
+display: flex;
+justify-content:center;
+flex-direction: row;
+gap: 30px;
+margin-top: 100px;
+}
