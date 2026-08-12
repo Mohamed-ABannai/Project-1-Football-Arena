@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('./Background.jpeg');
+    background-image: url('../assests/Background.jpeg');
 
     background-size: cover;
 
@@ -103,26 +103,7 @@ a {
 }
 
 
-.Categories {
-
-    height: 150px;
-    width: 300px;
-    object-fit: cover;
-    background-position: center;
-    border-radius: 40px;
-    flex-wrap: wrap;
-
-}
-
-#Categores-Selected {
-
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 30px;
-    margin-top: 100px;
-}
-
+.Categories,
 .Level {
 
     height: 150px;
@@ -131,8 +112,10 @@ a {
     background-position: center;
     border-radius: 40px;
     flex-wrap: wrap;
+
 }
 
+#Categores-Selected,
 #Levels {
 
     display: flex;
@@ -143,14 +126,15 @@ a {
 }
 
 
-
 .card-front {
-    background-image: url('./PlayerWithName.png');
+    background-image: url('../assests/PlayerWithName.png');
     width: 200px;
     height: 200px;
-    background-color: aqua;
     border-radius: 20px;
     margin-left: 40px;
+
+    background-size: cover;
+    background-position: center;
 
 }
 
@@ -165,13 +149,14 @@ a {
     gap: 30px;
 }
 
-#reset-cards {
+#play-cards {
 
     justify-content: center;
     align-items: center;
-    margin-left: 675px;
+    margin-left: 500px;
 
 }
+
 
 
 #time-interval {
@@ -180,5 +165,63 @@ a {
     align-items: center;
     margin-left: 675px;
     margin-bottom: 80px;
+
+}
+
+#PlayernName {
+
+    background-image: url('../assests/PlayerWithName.png');
+    background-position: center;
+    background-size: cover;
+
+
+}
+
+#Clubs-Logo {
+
+    background-image: url('../assests/OldWithNew.png');
+    background-position: center;
+    background-size: cover;
+}
+
+#Saudi-League {
+
+    background-image: url('../assests/SaudiLeague.png');
+    background-position: center;
+    background-size: cover;
+
+}
+
+#GA-Instructor {
+
+    background-image: url('../assests/General-Assembley.png');
+    background-position: center;
+    background-size: cover;
+
+}
+
+#Easy {
+
+    background-image: url('../assests/Easy.png');
+    background-position: center;
+    background-size: cover;
+
+}
+
+#Medium {
+
+    background-image: url('../assests/Medium.png');
+    background-position: center;
+    background-size: cover;
+
+
+}
+
+#Hard {
+
+    background-image: url('../assests/Hard.png');
+    background-position: center;
+    background-size: cover;
+
 
 }
