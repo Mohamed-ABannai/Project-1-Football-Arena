@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('../assests/Background.jpeg');
+    background-image: url('../assets/Background.jpeg');
 
     background-size: cover;
 
@@ -127,7 +127,7 @@ a {
 
 
 .card-front {
-    background-image: url('../assests/PlayerWithName.png');
+    background-image: url('../assets/PlayerWithName.png');
     width: 200px;
     height: 200px;
     border-radius: 20px;
@@ -171,7 +171,7 @@ a {
 
 #PlayernName {
 
-    background-image: url('../assests/PlayerWithName.png');
+    background-image: url('../assets/PlayerWithName.png');
     background-position: center;
     background-size: cover;
 
@@ -180,14 +180,14 @@ a {
 
 #Clubs-Logo {
 
-    background-image: url('../assests/OldWithNew.png');
+    background-image: url('../assets/OldWithNew.png');
     background-position: center;
     background-size: cover;
 }
 
 #Saudi-League {
 
-    background-image: url('../assests/SaudiLeague.png');
+    background-image: url('../assets/SaudiLeague.png');
     background-position: center;
     background-size: cover;
 
@@ -195,7 +195,7 @@ a {
 
 #GA-Instructor {
 
-    background-image: url('../assests/General-Assembley.png');
+    background-image: url('../assets/General-Assembley.png');
     background-position: center;
     background-size: cover;
 
@@ -203,7 +203,7 @@ a {
 
 #Easy {
 
-    background-image: url('../assests/Easy.png');
+    background-image: url('../assets/Easy.png');
     background-position: center;
     background-size: cover;
 
@@ -211,7 +211,7 @@ a {
 
 #Medium {
 
-    background-image: url('../assests/Medium.png');
+    background-image: url('../assets/Medium.png');
     background-position: center;
     background-size: cover;
 
@@ -220,7 +220,7 @@ a {
 
 #Hard {
 
-    background-image: url('../assests/Hard.png');
+    background-image: url('../assets/Hard.png');
     background-position: center;
     background-size: cover;
 

@@ -3,6 +3,10 @@ const CategoreElement = document.querySelectorAll('.Categories')
 
 const cards = document.querySelectorAll(".card-front")
 
+const levelElement=document.querySelectorAll(".Level")
+
+const selectedCategory = localStorage.getItem("category")
+const selectedLevel = localStorage.getItem("level")
 
 const categories = {
 
@@ -86,3 +90,66 @@ const categories = {
 };
 
 
+function init(event) {
+
+    if (event.target.id === "PlayernName") {
+        console.log("Player With Name")
+        localStorage.setItem("category", "playerWithName")
+
+    }
+
+    else if (event.target.id === "Clubs-Logo") {
+        console.log("Clubs Logo")
+        localStorage.setItem("category","oldVsNewClubLogo")
+    }
+
+    else if (event.target.id=== "Saudi-League") {
+        console.log("Saudi League")
+        localStorage.setItem("category","saudiLeague")
+
+    }
+
+    else if (event.target.id === "GA-Instructor") {
+        console.log("GA Instructor")
+        localStorage.setItem("category","gaInstructor")
+    }
+}
+
+
+
+function selectLevel(event) {
+    
+if(event.target.id ==="Easy"){
+
+console.log("Easy")
+localStorage.setItem("level", "Easy")
+
+}
+else if (event.target.id ==="Medium"){
+
+console.log("Medium")
+localStorage.setItem("level", "Medium")
+
+}
+else if(event.target.id ==="Hard"){
+
+console.log("Hard")
+localStorage.setItem("level", "Hard")
+
+
+}
+
+
+}
+for(let Choose of CategoreElement)
+Choose.addEventListener('click',init)
+
+for(let Level of levelElement)
+Level.addEventListener('click',selectLevel)
+
+console.log(selectedCategory)
+console.log(selectedLevel)
+
+const selectedCards = categories[selectedCategory]
+
+console.log(selectedCards)
