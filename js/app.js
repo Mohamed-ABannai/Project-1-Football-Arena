@@ -87,6 +87,10 @@ const selectedLevel = localStorage.getItem("level")
 
 const selectedCards = categories[selectedCategory]
 
+let gameCards = []
+
+let defaultImage
+
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -99,11 +103,44 @@ const cards = document.querySelectorAll(".card-front")
 
 /*-------------------------------- Functions --------------------------------*/
 
+function prepareCards() {
+
+    if (selectedCards) {
+
+        if (selectedCards.length === 8) {
+
+            for (let i = 0; i < selectedCards.length; i++) {
+
+                gameCards.push(selectedCards[i])
+
+            }
+
+            for (let i = 0; i < selectedCards.length; i++) {
+
+                gameCards.push(selectedCards[i])
+
+            }
+
+        }
+
+        else {
+
+            for (let i = 0; i < selectedCards.length; i++) {
+
+                gameCards.push(selectedCards[i])
+
+            }
+
+        }
+
+    }
+
+}
+
+
 function selectCategory(event) {
 
     if (event.target.id === "PlayernName") {
-
-        console.log("Player With Name")
 
         localStorage.setItem("category", "playerWithName")
 
@@ -111,23 +148,17 @@ function selectCategory(event) {
 
     else if (event.target.id === "Clubs-Logo") {
 
-        console.log("Clubs Logo")
-
         localStorage.setItem("category", "oldVsNewClubLogo")
 
     }
 
     else if (event.target.id === "Saudi-League") {
 
-        console.log("Saudi League")
-
         localStorage.setItem("category", "saudiLeague")
 
     }
 
     else if (event.target.id === "GA-Instructor") {
-
-        console.log("GA Instructor")
 
         localStorage.setItem("category", "gaInstructor")
 
@@ -140,15 +171,11 @@ function selectLevel(event) {
 
     if (event.target.id === "Easy") {
 
-        console.log("Easy")
-
         localStorage.setItem("level", "Easy")
 
     }
 
     else if (event.target.id === "Medium") {
-
-        console.log("Medium")
 
         localStorage.setItem("level", "Medium")
 
@@ -156,13 +183,58 @@ function selectLevel(event) {
 
     else if (event.target.id === "Hard") {
 
-        console.log("Hard")
-
         localStorage.setItem("level", "Hard")
 
     }
 
 }
+
+
+function setDefaultImage() {
+
+    if (selectedCategory === "playerWithName") {
+
+        defaultImage = "./assets/PlayerWithName.png"
+
+    }
+
+    else if (selectedCategory === "oldVsNewClubLogo") {
+
+        defaultImage = "./assets/OldWithNew.png"
+
+    }
+
+    else if (selectedCategory === "saudiLeague") {
+
+        defaultImage = "./assets/SaudiLeague.png"
+
+    }
+
+    else if (selectedCategory === "gaInstructor") {
+
+        defaultImage = "./assets/General-Assembley.png"
+
+    }
+
+}
+
+
+function showDefaultImage() {
+
+    for (let i = 0; i < cards.length; i++) {
+
+        cards[i].style.backgroundImage = `url("${defaultImage}")`
+
+    }
+
+}
+
+
+prepareCards()
+
+setDefaultImage()
+
+showDefaultImage()
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -179,10 +251,3 @@ for (let oneLevel of levelElements) {
     oneLevel.addEventListener("click", selectLevel)
 
 }
-
-
-console.log(selectedCategory)
-
-console.log(selectedLevel)
-
-console.log(selectedCards)
