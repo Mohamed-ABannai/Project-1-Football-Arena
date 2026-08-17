@@ -122,6 +122,8 @@ const messageElement = document.querySelector("#Message")
 
 const startButton = document.querySelector("#Start")
 
+const resetButton = document.querySelector("#reset")
+
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -336,6 +338,12 @@ function startGame() {
 
     }
 
+    if (gameOver === true) {
+
+        resetGame()
+
+    }
+
     gameStarted = true
 
     startTimer()
@@ -453,6 +461,35 @@ function wrongMatch(index) {
 }
 
 
+function resetGame() {
+
+    clearInterval(timer)
+
+    clearTimeout(closeCardsTimer)
+
+    firstCard = null
+
+    matchedCards = []
+
+    lockCards = false
+
+    gameStarted = false
+
+    gameOver = false
+
+    messageElement.textContent = ""
+
+    setTime()
+
+    showTime()
+
+    shuffleCards()
+
+    showDefaultImage()
+
+}
+
+
 prepareCards()
 
 setDefaultImage()
@@ -501,5 +538,12 @@ for (let i = 0; i < cards.length; i++) {
 if (startButton) {
 
     startButton.addEventListener("click", startGame)
+
+}
+
+
+if (resetButton) {
+
+    resetButton.addEventListener("click", resetGame)
 
 }
