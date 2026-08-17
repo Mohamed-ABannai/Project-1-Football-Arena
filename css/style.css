@@ -159,6 +159,21 @@ a {
 }
 
 
+#howtoplay {
+    display: none;
+    justify-content: center;
+}
+
+#container {
+    width: 405px;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgb(104, 121, 117);
+    margin-bottom: 40px;
+    padding: 20px;
+
+}
+
 #time-interval {
     display: flex;
     justify-content: center;
