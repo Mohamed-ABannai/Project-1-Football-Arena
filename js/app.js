@@ -13,30 +13,30 @@ const categories = {
         { image: "./assets/Ga-Instructor/Zahra.png", matchId: "zahra" }
     ],
 
-    oldVsNewClubLogo: [
-        { image: "./assets/OldvNewClubLogo/AlnasserNewLogo.png", matchId: "alnasser" },
-        { image: "./assets/OldvNewClubLogo/AlnasserOldLogo.png", matchId: "alnasser" },
+    oldNewClubLogo: [
+        { image: "./assets/OldwNewClubLogo/AlnasserNewLogo.png", matchId: "alnasser" },
+        { image: "./assets/OldwNewClubLogo/AlnasserOldLogo.png", matchId: "alnasser" },
 
-        { image: "./assets/OldvNewClubLogo/AtleticoNewLogo.png", matchId: "atletico" },
-        { image: "./assets/OldvNewClubLogo/AtleticoOldLogo.png", matchId: "atletico" },
+        { image: "./assets/OldwNewClubLogo/AtelticoNewLogo.png", matchId: "atletico" },
+        { image: "./assets/OldwNewClubLogo/AtelticoOldLogo.png", matchId: "atletico" },
 
-        { image: "./assets/OldvNewClubLogo/BarcelonaNewLogo.png", matchId: "barcelona" },
-        { image: "./assets/OldvNewClubLogo/BarcelonaOldLogo.png", matchId: "barcelona" },
+        { image: "./assets/OldwNewClubLogo/BarcelonaNewLogo.png", matchId: "barcelona" },
+        { image: "./assets/OldwNewClubLogo/BarcelonaOldLogo.png", matchId: "barcelona" },
 
-        { image: "./assets/OldvNewClubLogo/BournemouthNewLogo.png", matchId: "bournemouth" },
-        { image: "./assets/OldvNewClubLogo/BournemouthOldLogo.png", matchId: "bournemouth" },
+        { image: "./assets/OldwNewClubLogo/BournemouthNewLogo.png", matchId: "bournemouth" },
+        { image: "./assets/OldwNewClubLogo/BournemouthOldLogo.png", matchId: "bournemouth" },
 
-        { image: "./assets/OldvNewClubLogo/LeicesterCityNewLogo.png", matchId: "leicester" },
-        { image: "./assets/OldvNewClubLogo/LeicesterCityOldLogo.png", matchId: "leicester" },
+        { image: "./assets/OldwNewClubLogo/LeicesterCityNewLogo.png", matchId: "leicester" },
+        { image: "./assets/OldwNewClubLogo/LeicesterCityOldLogo.png", matchId: "leicester" },
 
-        { image: "./assets/OldvNewClubLogo/MCNewLogo.png", matchId: "mc" },
-        { image: "./assets/OldvNewClubLogo/MCOldLogo.png", matchId: "mc" },
+        { image: "./assets/OldwNewClubLogo/MCNewLogo.png", matchId: "mc" },
+        { image: "./assets/OldwNewClubLogo/MCOldLogo.png", matchId: "mc" },
 
-        { image: "./assets/OldvNewClubLogo/RomaNewLogo.png", matchId: "roma" },
-        { image: "./assets/OldvNewClubLogo/RomaOldLogo.png", matchId: "roma" },
+        { image: "./assets/OldwNewClubLogo/RomaNewLogo.png", matchId: "roma" },
+        { image: "./assets/OldwNewClubLogo/RomaOldLogo.png", matchId: "roma" },
 
-        { image: "./assets/OldvNewClubLogo/villarrealNewLogo.png", matchId: "villarreal" },
-        { image: "./assets/OldvNewClubLogo/villarrealOldLogo.png", matchId: "villarreal" }
+        { image: "./assets/OldwNewClubLogo/villarrealNewLogo.png", matchId: "villarreal" },
+        { image: "./assets/OldwNewClubLogo/villarrealOldLogo.png", matchId: "villarreal" }
     ],
 
     playerWithName: [
@@ -82,46 +82,33 @@ const categories = {
 /*---------------------------- Variables (state) ----------------------------*/
 
 const selectedCategory = localStorage.getItem("category")
-
 const selectedLevel = localStorage.getItem("level")
-
 const selectedCards = categories[selectedCategory]
 
 let gameCards = []
-
-let defaultImage
-
 let firstCard = null
-
 let matchedCards = []
 
+let gameOver = false
 let lockCards = false
-
 let gameStarted = false
 
-let gameOver = false
-
+let defaultImage
 let closeCardsTimer
-
 let timer
-
 let time
 
 
 /*------------------------ Cached Element References ------------------------*/
 
 const categoryElements = document.querySelectorAll(".Categories")
-
 const levelElements = document.querySelectorAll(".Level")
-
 const cards = document.querySelectorAll(".card-front")
 
 const timerElement = document.querySelector("#timer")
-
 const messageElement = document.querySelector("#Message")
 
 const startButton = document.querySelector("#Start")
-
 const resetButton = document.querySelector("#reset")
 
 
@@ -172,7 +159,7 @@ function selectCategory(event) {
 
     else if (event.target.id === "Clubs-Logo") {
 
-        localStorage.setItem("category", "oldVsNewClubLogo")
+        localStorage.setItem("category", "oldNewClubLogo")
 
     }
 
@@ -222,7 +209,7 @@ function setDefaultImage() {
 
     }
 
-    else if (selectedCategory === "oldVsNewClubLogo") {
+    else if (selectedCategory === "oldNewClubLogo") {
 
         defaultImage = "./assets/OldWithNew.png"
 
@@ -239,28 +226,6 @@ function setDefaultImage() {
         defaultImage = "./assets/General-Assembley.png"
 
     }
-
-}
-
-
-function showDefaultImage() {
-
-    for (let i = 0; i < cards.length; i++) {
-
-        cards[i].style.backgroundImage = `url("${defaultImage}")`
-
-    }
-
-}
-
-
-function shuffleCards() {
-
-    gameCards.sort(function () {
-
-        return Math.random() - 0.5
-
-    })
 
 }
 
@@ -291,7 +256,6 @@ function setTime() {
 function showTime() {
 
     let minutes = Math.floor(time / 60)
-
     let seconds = time % 60
 
     if (seconds < 10) {
@@ -317,9 +281,8 @@ function startTimer() {
 
             clearInterval(timer)
 
-            gameStarted = false
-
             gameOver = true
+            gameStarted = false
 
             messageElement.textContent = "You Lose!"
 
@@ -330,36 +293,9 @@ function startTimer() {
 }
 
 
-function startGame() {
-
-    if (gameStarted === true) {
-
-        return
-
-    }
-
-    if (gameOver === true) {
-
-        resetGame()
-
-    }
-
-    gameStarted = true
-
-    startTimer()
-
-}
-
-
 function showCard(index) {
 
     if (gameStarted === false) {
-
-        return
-
-    }
-
-    if (gameOver === true) {
 
         return
 
@@ -383,7 +319,7 @@ function showCard(index) {
 
     }
 
-    cards[index].style.backgroundImage = `url("${gameCards[index].image}")`
+    cards[index].style.backgroundImage =`url("${gameCards[index].image}")`
 
     if (firstCard === null) {
 
@@ -420,7 +356,6 @@ function checkCards(index) {
 function correctMatch(index) {
 
     matchedCards.push(firstCard)
-
     matchedCards.push(index)
 
     firstCard = null
@@ -429,9 +364,8 @@ function correctMatch(index) {
 
         clearInterval(timer)
 
-        gameStarted = false
-
         gameOver = true
+        gameStarted = false
 
         messageElement.textContent = "You Win!"
 
@@ -448,12 +382,11 @@ function wrongMatch(index) {
 
     closeCardsTimer = setTimeout(function () {
 
-        cards[wrongCard].style.backgroundImage = `url("${defaultImage}")`
+        cards[wrongCard].style.backgroundImage =`url("${defaultImage}")`
 
-        cards[index].style.backgroundImage = `url("${defaultImage}")`
+        cards[index].style.backgroundImage =`url("${defaultImage}")`
 
         firstCard = null
-
         lockCards = false
 
     }, 700)
@@ -461,21 +394,51 @@ function wrongMatch(index) {
 }
 
 
+function shuffleCards() {
+
+    gameCards.sort(function () {
+
+        return Math.random() - 0.5
+
+    })
+
+}
+
+
+function startGame() {
+
+    if (gameStarted === true) {
+
+        return
+
+    }
+
+    if (gameOver === true) {
+
+        resetGame()
+
+    }
+
+    gameStarted = true
+
+    shuffleCards()
+
+    startTimer()
+
+}
+
+
 function resetGame() {
 
     clearInterval(timer)
-
     clearTimeout(closeCardsTimer)
 
     firstCard = null
-
     matchedCards = []
 
-    lockCards = false
-
-    gameStarted = false
-
     gameOver = false
+    gameStarted = false
+    lockCards = false
 
     messageElement.textContent = ""
 
@@ -485,27 +448,40 @@ function resetGame() {
 
     shuffleCards()
 
-    showDefaultImage()
+    for (let i = 0; i < cards.length; i++) {
+
+        cards[i].style.backgroundImage =
+            `url("${defaultImage}")`
+
+    }
 
 }
 
 
-prepareCards()
+function init() {
 
-setDefaultImage()
+    prepareCards()
 
-shuffleCards()
+    setDefaultImage()
 
-showDefaultImage()
+    setTime()
 
-setTime()
+    if (cards.length > 0) {
 
+        showTime()
 
-if (cards.length > 0) {
+        for (let i = 0; i < cards.length; i++) {
 
-    showTime()
+            cards[i].style.backgroundImage =`url("${defaultImage}")`
+
+        }
+
+    }
 
 }
+
+
+init()
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -547,3 +523,6 @@ if (resetButton) {
     resetButton.addEventListener("click", resetGame)
 
 }
+
+
+
