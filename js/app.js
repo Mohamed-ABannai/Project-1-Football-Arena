@@ -99,6 +99,8 @@ let lockCards = false
 
 let gameStarted = false
 
+let gameOver = false
+
 let closeCardsTimer
 
 let timer
@@ -115,6 +117,8 @@ const levelElements = document.querySelectorAll(".Level")
 const cards = document.querySelectorAll(".card-front")
 
 const timerElement = document.querySelector("#timer")
+
+const messageElement = document.querySelector("#Message")
 
 const startButton = document.querySelector("#Start")
 
@@ -313,6 +317,10 @@ function startTimer() {
 
             gameStarted = false
 
+            gameOver = true
+
+            messageElement.textContent = "You Lose!"
+
         }
 
     }, 1000)
@@ -338,6 +346,12 @@ function startGame() {
 function showCard(index) {
 
     if (gameStarted === false) {
+
+        return
+
+    }
+
+    if (gameOver === true) {
 
         return
 
@@ -402,6 +416,18 @@ function correctMatch(index) {
     matchedCards.push(index)
 
     firstCard = null
+
+    if (matchedCards.length === cards.length) {
+
+        clearInterval(timer)
+
+        gameStarted = false
+
+        gameOver = true
+
+        messageElement.textContent = "You Win!"
+
+    }
 
 }
 
