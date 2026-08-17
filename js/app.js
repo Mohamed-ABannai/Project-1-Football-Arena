@@ -1,12 +1,4 @@
-
-const CategoreElement = document.querySelectorAll('.Categories')
-
-const cards = document.querySelectorAll(".card-front")
-
-const levelElement=document.querySelectorAll(".Level")
-
-const selectedCategory = localStorage.getItem("category")
-const selectedLevel = localStorage.getItem("level")
+/*-------------------------------- Constants --------------------------------*/
 
 const categories = {
 
@@ -20,7 +12,6 @@ const categories = {
         { image: "./assets/Ga-Instructor/SayedHamid.png", matchId: "sayedhamid" },
         { image: "./assets/Ga-Instructor/Zahra.png", matchId: "zahra" }
     ],
-
 
     oldVsNewClubLogo: [
         { image: "./assets/OldvNewClubLogo/AlnasserNewLogo.png", matchId: "alnasser" },
@@ -48,7 +39,6 @@ const categories = {
         { image: "./assets/OldvNewClubLogo/villarrealOldLogo.png", matchId: "villarreal" }
     ],
 
-
     playerWithName: [
         { image: "./assets/PlayerWithName/HaalandPlayer.png", matchId: "haaland" },
         { image: "./assets/PlayerWithName/HaalandName.png", matchId: "haaland" },
@@ -75,7 +65,6 @@ const categories = {
         { image: "./assets/PlayerWithName/ZidanName.png", matchId: "zidane" }
     ],
 
-
     saudiLeague: [
         { image: "./assets/SaudiLeague/AbdullaPlayer.png", matchId: "abdulla" },
         { image: "./assets/SaudiLeague/AlkassarPlayer.png", matchId: "alkassar" },
@@ -87,69 +76,113 @@ const categories = {
         { image: "./assets/SaudiLeague/SalemPlayer.png", matchId: "salem" }
     ]
 
-};
+}
 
 
-function init(event) {
+/*---------------------------- Variables (state) ----------------------------*/
+
+const selectedCategory = localStorage.getItem("category")
+
+const selectedLevel = localStorage.getItem("level")
+
+const selectedCards = categories[selectedCategory]
+
+
+/*------------------------ Cached Element References ------------------------*/
+
+const categoryElements = document.querySelectorAll(".Categories")
+
+const levelElements = document.querySelectorAll(".Level")
+
+const cards = document.querySelectorAll(".card-front")
+
+
+/*-------------------------------- Functions --------------------------------*/
+
+function selectCategory(event) {
 
     if (event.target.id === "PlayernName") {
+
         console.log("Player With Name")
+
         localStorage.setItem("category", "playerWithName")
 
     }
 
     else if (event.target.id === "Clubs-Logo") {
+
         console.log("Clubs Logo")
-        localStorage.setItem("category","oldVsNewClubLogo")
+
+        localStorage.setItem("category", "oldVsNewClubLogo")
+
     }
 
-    else if (event.target.id=== "Saudi-League") {
+    else if (event.target.id === "Saudi-League") {
+
         console.log("Saudi League")
-        localStorage.setItem("category","saudiLeague")
+
+        localStorage.setItem("category", "saudiLeague")
 
     }
 
     else if (event.target.id === "GA-Instructor") {
-        console.log("GA Instructor")
-        localStorage.setItem("category","gaInstructor")
-    }
-}
 
+        console.log("GA Instructor")
+
+        localStorage.setItem("category", "gaInstructor")
+
+    }
+
+}
 
 
 function selectLevel(event) {
-    
-if(event.target.id ==="Easy"){
 
-console.log("Easy")
-localStorage.setItem("level", "Easy")
+    if (event.target.id === "Easy") {
+
+        console.log("Easy")
+
+        localStorage.setItem("level", "Easy")
+
+    }
+
+    else if (event.target.id === "Medium") {
+
+        console.log("Medium")
+
+        localStorage.setItem("level", "Medium")
+
+    }
+
+    else if (event.target.id === "Hard") {
+
+        console.log("Hard")
+
+        localStorage.setItem("level", "Hard")
+
+    }
 
 }
-else if (event.target.id ==="Medium"){
 
-console.log("Medium")
-localStorage.setItem("level", "Medium")
 
-}
-else if(event.target.id ==="Hard"){
+/*----------------------------- Event Listeners -----------------------------*/
 
-console.log("Hard")
-localStorage.setItem("level", "Hard")
+for (let oneCategory of categoryElements) {
 
+    oneCategory.addEventListener("click", selectCategory)
 
 }
 
 
-}
-for(let Choose of CategoreElement)
-Choose.addEventListener('click',init)
+for (let oneLevel of levelElements) {
 
-for(let Level of levelElement)
-Level.addEventListener('click',selectLevel)
+    oneLevel.addEventListener("click", selectLevel)
+
+}
+
 
 console.log(selectedCategory)
-console.log(selectedLevel)
 
-const selectedCards = categories[selectedCategory]
+console.log(selectedLevel)
 
 console.log(selectedCards)

@@ -52,9 +52,11 @@ img {
 
 #title {
 
-    font-size: 80px;
+    font-size: 120px;
     font-family: "Londrina Shadow", sans-serif;
-    color: rgb(255, 0, 0)
+    color: rgb(255, 0, 0);
+
+
 }
 
 #Buttons {
@@ -127,9 +129,8 @@ a {
 
 
 .card-front {
-    background-image: url('../assets/PlayerWithName.png');
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 20px;
     margin-left: 40px;
 
@@ -151,21 +152,27 @@ a {
 }
 
 #play-cards {
-
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 500px;
 
 }
 
 
-
 #time-interval {
-
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 675px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+
+}
+
+#Messages {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
 
 }
 
