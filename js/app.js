@@ -97,6 +97,8 @@ let matchedCards = []
 
 let lockCards = false
 
+let gameStarted = false
+
 let closeCardsTimer
 
 let timer
@@ -113,6 +115,8 @@ const levelElements = document.querySelectorAll(".Level")
 const cards = document.querySelectorAll(".card-front")
 
 const timerElement = document.querySelector("#timer")
+
+const startButton = document.querySelector("#Start")
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -307,6 +311,8 @@ function startTimer() {
 
             clearInterval(timer)
 
+            gameStarted = false
+
         }
 
     }, 1000)
@@ -314,7 +320,28 @@ function startTimer() {
 }
 
 
+function startGame() {
+
+    if (gameStarted === true) {
+
+        return
+
+    }
+
+    gameStarted = true
+
+    startTimer()
+
+}
+
+
 function showCard(index) {
+
+    if (gameStarted === false) {
+
+        return
+
+    }
 
     if (lockCards === true) {
 
@@ -415,8 +442,6 @@ if (cards.length > 0) {
 
     showTime()
 
-    startTimer()
-
 }
 
 
@@ -443,5 +468,12 @@ for (let i = 0; i < cards.length; i++) {
         showCard(i)
 
     })
+
+}
+
+
+if (startButton) {
+
+    startButton.addEventListener("click", startGame)
 
 }
