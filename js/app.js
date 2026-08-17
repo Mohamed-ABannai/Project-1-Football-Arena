@@ -241,6 +241,13 @@ function shuffleCards() {
 }
 
 
+function showCard(index) {
+
+    cards[index].style.backgroundImage = `url("${gameCards[index].image}")`
+
+}
+
+
 prepareCards()
 
 setDefaultImage()
@@ -262,5 +269,16 @@ for (let oneCategory of categoryElements) {
 for (let oneLevel of levelElements) {
 
     oneLevel.addEventListener("click", selectLevel)
+
+}
+
+
+for (let i = 0; i < cards.length; i++) {
+
+    cards[i].addEventListener("click", function () {
+
+        showCard(i)
+
+    })
 
 }
