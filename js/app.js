@@ -91,6 +91,14 @@ let gameCards = []
 
 let defaultImage
 
+let firstCard = null
+
+let matchedCards = []
+
+let lockCards = false
+
+let closeCardsTimer
+
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -243,7 +251,86 @@ function shuffleCards() {
 
 function showCard(index) {
 
+    if (lockCards === true) {
+
+        return
+
+    }
+
+    if (index === firstCard) {
+
+        return
+
+    }
+
+    if (matchedCards.includes(index)) {
+
+        return
+
+    }
+
     cards[index].style.backgroundImage = `url("${gameCards[index].image}")`
+
+    if (firstCard === null) {
+
+        firstCard = index
+
+    }
+
+    else {
+
+        checkCards(index)
+
+    }
+
+}
+
+
+function checkCards(index) {
+
+    if (gameCards[firstCard].matchId === gameCards[index].matchId) {
+
+        correctMatch(index)
+
+    }
+
+    else {
+
+        wrongMatch(index)
+
+    }
+
+}
+
+
+function correctMatch(index) {
+
+    matchedCards.push(firstCard)
+
+    matchedCards.push(index)
+
+    firstCard = null
+
+}
+
+
+function wrongMatch(index) {
+
+    lockCards = true
+
+    let wrongCard = firstCard
+
+    closeCardsTimer = setTimeout(function () {
+
+        cards[wrongCard].style.backgroundImage = `url("${defaultImage}")`
+
+        cards[index].style.backgroundImage = `url("${defaultImage}")`
+
+        firstCard = null
+
+        lockCards = false
+
+    }, 700)
 
 }
 
