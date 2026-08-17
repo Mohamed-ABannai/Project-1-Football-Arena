@@ -112,6 +112,9 @@ const startButton = document.querySelector("#Start")
 const resetButton = document.querySelector("#reset")
 
 
+const howtoPlay=document.querySelector("#howtoplay")
+
+const howtoplayBtn=document.querySelector("#howtoPlayBtn")
 /*-------------------------------- Functions --------------------------------*/
 
 function prepareCards() {
@@ -481,6 +484,28 @@ function init() {
 }
 
 
+
+function showhowtoPlay() {
+
+    if (howtoPlay.style.display === "flex") {
+
+        howtoPlay.style.display = "none"
+
+    }
+
+    else {
+
+        howtoPlay.style.display = "flex"
+
+    }
+
+}
+
+
+
+
+
+
 init()
 
 
@@ -526,3 +551,4 @@ if (resetButton) {
 
 
 
+howtoplayBtn.addEventListener('click',showhowtoPlay)
