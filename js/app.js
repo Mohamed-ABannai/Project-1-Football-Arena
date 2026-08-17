@@ -99,6 +99,10 @@ let lockCards = false
 
 let closeCardsTimer
 
+let timer
+
+let time
+
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -107,6 +111,8 @@ const categoryElements = document.querySelectorAll(".Categories")
 const levelElements = document.querySelectorAll(".Level")
 
 const cards = document.querySelectorAll(".card-front")
+
+const timerElement = document.querySelector("#timer")
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -249,6 +255,65 @@ function shuffleCards() {
 }
 
 
+function setTime() {
+
+    if (selectedLevel === "Easy") {
+
+        time = 80
+
+    }
+
+    else if (selectedLevel === "Medium") {
+
+        time = 50
+
+    }
+
+    else if (selectedLevel === "Hard") {
+
+        time = 30
+
+    }
+
+}
+
+
+function showTime() {
+
+    let minutes = Math.floor(time / 60)
+
+    let seconds = time % 60
+
+    if (seconds < 10) {
+
+        seconds = "0" + seconds
+
+    }
+
+    timerElement.textContent = minutes + ":" + seconds
+
+}
+
+
+function startTimer() {
+
+    timer = setInterval(function () {
+
+        time--
+
+        showTime()
+
+        if (time === 0) {
+
+            clearInterval(timer)
+
+        }
+
+    }, 1000)
+
+}
+
+
 function showCard(index) {
 
     if (lockCards === true) {
@@ -342,6 +407,17 @@ setDefaultImage()
 shuffleCards()
 
 showDefaultImage()
+
+setTime()
+
+
+if (cards.length > 0) {
+
+    showTime()
+
+    startTimer()
+
+}
 
 
 /*----------------------------- Event Listeners -----------------------------*/
