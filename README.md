@@ -39,23 +39,23 @@ The player must match all card pairs before the timer reaches zero. Each difficu
 
 ### Home Page
 
-![Home page](image.png)
+![Home Page](./ReadMe-Image/index.png)
 
 ### How to Play
 
-![How to Play](image-1.png)
+![How to Play](./ReadMe-Image/HowtoPlay.png)
 
 ### Categories Selection
 
-![Categories Selected](image-2.png)
+![Categories Selected](./ReadMe-Image/Category.png)
 
 ### Difficulty Selection
 
-![Levels](image-3.png)
+![Levels](./ReadMe-Image/Level.png)
 
 ### Game Page
 
-![game page](image-4.png)
+![Game Page](./ReadMe-Image/Card.png)
 
 ## Future Enhancements
 

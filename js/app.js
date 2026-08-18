@@ -2,15 +2,15 @@
 
 const categories = {
 
-    gaInstructor: [
-        { image: "./assets/Ga-Instructor/Duaa.jpeg", matchId: "duaa" },
-        { image: "./assets/Ga-Instructor/Jameela.png", matchId: "jameela" },
-        { image: "./assets/Ga-Instructor/Nahid.jpeg", matchId: "nahid" },
-        { image: "./assets/Ga-Instructor/Omer.png", matchId: "omer" },
-        { image: "./assets/Ga-Instructor/Reem.jpeg", matchId: "reem" },
-        { image: "./assets/Ga-Instructor/Sara.png", matchId: "sara" },
-        { image: "./assets/Ga-Instructor/SayedHamid.png", matchId: "sayedhamid" },
-        { image: "./assets/Ga-Instructor/Zahra.png", matchId: "zahra" }
+    GACourses: [
+        { image: "./assets/Ga-Courses/Cyber.png", matchId: "cyber" },
+        { image: "./assets/Ga-Courses/DataAnalytics.png", matchId: "dataanalytics" },
+        { image: "./assets/Ga-Courses/DataScience.png", matchId: "datascience" },
+        { image: "./assets/Ga-Courses/DigitalMarketing.png", matchId: "digitalmarketing" },
+        { image: "./assets/Ga-Courses/financialAnlysis.png", matchId: "financialanalysis" },
+        { image: "./assets/Ga-Courses/java.png", matchId: "java" },
+        { image: "./assets/Ga-Courses/softwareEng.png", matchId: "softwareengineering" },
+        { image: "./assets/Ga-Courses/UX.png", matchId: "ux" }
     ],
 
     oldNewClubLogo: [
@@ -112,9 +112,9 @@ const startButton = document.querySelector("#Start")
 const resetButton = document.querySelector("#reset")
 
 
-const howtoPlay=document.querySelector("#howtoplay")
+const howtoPlay = document.querySelector("#howtoplay")
 
-const howtoplayBtn=document.querySelector("#howtoPlayBtn")
+const howtoplayBtn = document.querySelector("#howtoPlayBtn")
 /*-------------------------------- Functions --------------------------------*/
 
 function prepareCards() {
@@ -172,9 +172,9 @@ function selectCategory(event) {
 
     }
 
-    else if (event.target.id === "GA-Instructor") {
+    else if (event.target.id === "GA-Courses") {
 
-        localStorage.setItem("category", "gaInstructor")
+        localStorage.setItem("category", "GACourses")
 
     }
 
@@ -224,9 +224,9 @@ function setDefaultImage() {
 
     }
 
-    else if (selectedCategory === "gaInstructor") {
+    else if (selectedCategory === "GACourses") {
 
-        defaultImage = "./assets/General-Assembley.png"
+        defaultImage = "./assets/GaCourses.png"
 
     }
 
@@ -322,7 +322,7 @@ function showCard(index) {
 
     }
 
-    cards[index].style.backgroundImage =`url("${gameCards[index].image}")`
+    cards[index].style.backgroundImage = `url("${gameCards[index].image}")`
 
     if (firstCard === null) {
 
@@ -385,9 +385,9 @@ function wrongMatch(index) {
 
     closeCardsTimer = setTimeout(function () {
 
-        cards[wrongCard].style.backgroundImage =`url("${defaultImage}")`
+        cards[wrongCard].style.backgroundImage = `url("${defaultImage}")`
 
-        cards[index].style.backgroundImage =`url("${defaultImage}")`
+        cards[index].style.backgroundImage = `url("${defaultImage}")`
 
         firstCard = null
         lockCards = false
@@ -475,7 +475,7 @@ function init() {
 
         for (let i = 0; i < cards.length; i++) {
 
-            cards[i].style.backgroundImage =`url("${defaultImage}")`
+            cards[i].style.backgroundImage = `url("${defaultImage}")`
 
         }
 
@@ -551,4 +551,4 @@ if (resetButton) {
 
 
 
-howtoplayBtn.addEventListener('click',showhowtoPlay)
+howtoplayBtn.addEventListener('click', showhowtoPlay)
